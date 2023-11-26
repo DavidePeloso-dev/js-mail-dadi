@@ -2,6 +2,9 @@
 const usersMail= ['davide@gmail.com', 'fabio@gmail.com', 'luca@gmail.com'];
 const usersPassword = ['mangia', 'prega', 'ama'];
 
+//declare the playground
+const playground = document.getElementById('playground');
+
 // declare the container of the forms
 const logInContainer = document.getElementById('logIn_container');
 const signInContainer = document.getElementById('signIn_container');
@@ -126,6 +129,7 @@ accessForm.addEventListener('submit', function(sub){
                     inputMail.classList.remove('error', 'is-invalid');
                     inputPassword.classList.remove('error', 'is-invalid');
                     logInContainer.classList.add('d-none');
+                    playground.classList.remove('d-none');
                 } else {
                     // No
                     console.log('something wrong');
@@ -164,12 +168,39 @@ inputPassword.addEventListener('click', function(){
     inputPassword.classList.remove('error', 'is-invalid');
 });
 
-
-
-
 //close the error modal
 const closeModal = document.querySelector('#close_modal');
 
 closeModal.addEventListener('click', function(){
     errorModal.classList.add('d-none');
 });
+
+/*----------------------
+   Playground section 
+----------------------*/
+
+// declare play butto
+const playButton = document.getElementById('play');
+
+//start the game
+playButton.addEventListener('click', function(){
+    // declare the die spot
+    const userDie = document.querySelector('.user_die');
+    const computerDie = document.querySelector('.computer_die');
+
+    // declare the die number
+    const userResult = Math.floor(Math.random()* 6 +1);
+    const computerResult = Math.floor(Math.random()* 6 +1);
+    userDie.innerHTML = userResult;
+    computerDie.innerHTML = computerResult;
+
+    if (userResult > computerResult){
+        console.log('you win');
+    } else if(userResult < computerResult){
+        console.log('you lose');
+    } else {
+        console.log('pair');
+    }
+
+
+})
