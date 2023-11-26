@@ -9,8 +9,9 @@
   </head>
   <body class="d-flex position-relative">
     <div class="container ">
+
       <div class="row justify-content-center align-items-center">
-        <div id="logIn_container" class="col-6 card pb-3">
+        <div id="logIn_container" class="col-10 col-lg-6 card pb-3">
           <h1 class="py-2 fs-3 text-center border-bottom">Log in <span class="text-primary text-uppercase">your account</span> to play</h1>
           <form id="access_form" class="needs-validation" novalidate>
             <div class="mb-3">
@@ -31,7 +32,7 @@
           </form>
         </div>
 
-        <div id="signIn_container" class="col-6 card pb-3 d-none">
+        <div id="signIn_container" class="col-10 col-lg-6 card pb-3 d-none">
           <h1 class="py-2 fs-3 text-center border-bottom">Create <span class="text-primary text-uppercase">your account</span> to play</h1>
           <form id="signIn_form" class="needs-validation" novalidate>
             <div class="mb-3">
@@ -61,26 +62,37 @@
             </div>
           </form>
         </div>
+
         <div id="playground" class="col d-none">
-          <div class="d-flex justify-content-center">
-            <div class="col card text-center">
+          <div id="resoult" class="card my-3 text-center d-none">
+            <h1 class="card-header bg-primary text-white"></h1>
+            <div class="card-body">
+              <h2 class="card-message"></h2>
+            </div>
+          </div>
+
+          <row class="d-flex flex-wrap justify-content-center gap-3">
+            <div class="col-12 col-sm card text-center">
               <h2 class="border-bottom py-2">Your <span class='text-primary'>DIE</span></h2>
               <div class="user_die fs-1 p-5"></div>
             </div>
-            <div class="col card text-center">
+            <div class="col-12 col-sm card text-center">
               <h2 class="border-bottom py-2">Computer <span class='text-primary'>DIE</span></h2>
               <div class="computer_die fs-1 p-5"></div>
             </div>
-          </div>
+          </row>
+
           <div class="button text-center">
-            <button id="play" tipe="button" class="btn btn-primary px-4 mt-5">Play</button>
+              <button id="to_LogOut" type="button" class="btn btn-link text-primary mt-5 me-2">Log Out</button>
+              <button id="play" tipe="button" class="btn btn-primary px-4 mt-5">Play</button>
           </div>
+
         </div>
       </div>
     </div>
 
     <div class="bg-modal position-absolute d-flex justify-content-center align-items-center d-none">
-      <div class="card col-4 border-danger-subtle">
+      <div class="card col-8 col-lg-4 border-danger-subtle">
         <div class="card-header bg-danger border-danger-subtle text-white">
           Something is wrong
         </div>

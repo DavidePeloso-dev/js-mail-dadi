@@ -38,33 +38,53 @@ signInForm.addEventListener('submit', function(sub){
     }
     // if not, are the mail the same?
     else if(createSignInMail === createMailConfirmation){
+        // if so, has the mail already been used?
+        if(usersMail.includes(createSignInMail)){
+            // Yes
+            signInForm.classList.add('was-validated');
+            errorModal.classList.remove('d-none');
+            modalTitle.innerHTML = 'This email has already been used'
+            modalText.innerHTML = 'Try to Log In'
+            signInMail.classList.add('error', 'is-invalid');
+            mailConfirmation.classList.add('error');
+        }
         //if so, are the passwords the same?
-        if(createSingInPassword === createPasswordConfirmation){
-            // if so, has the mail already been used?
-            if(usersMail.includes(createSignInMail)){
-                // Yes
-                errorModal.classList.remove('d-none');
-                modalTitle.innerHTML = 'This email has already been used'
-                modalText.innerHTML = 'Try to Log In'
-                signInMail.classList.add('error', 'is-invalid');
-                mailConfirmation.classList.add('error');
-            }   // if not, has the password already been used?
-            else if(usersPassword.includes(createSingInPassword)){
+        else if(createSingInPassword === createPasswordConfirmation){
+               // if so, has the password already been used?
+            if(usersPassword.includes(createSingInPassword)){
                 // Yes
                 errorModal.classList.remove('d-none');
                 modalTitle.innerHTML = 'This Password has already been used'
                 modalText.innerHTML = 'Try another one'
                 signInPassword.classList.add('error', 'is-invalid');
                 passwordConfirmation.classList.add('error');
-            }   // No
+                signInForm.classList.add('was-validated');
+            }   
             else {
+                // No
                 usersMail.push(createSignInMail);
                 usersPassword.push(createSingInPassword);
                 logInContainer.classList.remove('d-none');
                 signInContainer.classList.add('d-none');
             }
+        }   
+        // No
+        else {
+            errorModal.classList.remove('d-none');
+            modalTitle.innerHTML = "The Passwords are not the same"
+            signInPassword.classList.add('error', 'is-invalid');
+            passwordConfirmation.classList.add('error');
+            signInForm.classList.add('was-validated');
         }
 
+    }   
+    // No
+    else {
+        errorModal.classList.remove('d-none');
+        modalTitle.innerHTML = "The Mails are not the same"
+        signInMail.classList.add('error', 'is-invalid');
+        mailConfirmation.classList.add('error');
+        signInForm.classList.add('was-validated');
     }
 
 })
@@ -173,6 +193,7 @@ const closeModal = document.querySelector('#close_modal');
 
 closeModal.addEventListener('click', function(){
     errorModal.classList.add('d-none');
+    modalText.innerHTML = "";
 });
 
 /*----------------------
@@ -194,13 +215,39 @@ playButton.addEventListener('click', function(){
     userDie.innerHTML = userResult;
     computerDie.innerHTML = computerResult;
 
+    // declare message component
+    const message =document.getElementById('resoult');
+    const messageHeader = document.querySelector('#playground .card-header');
+    const messageBody = document.querySelector('#playground .card-message');
+
+    message.classList.remove('d-none');
+
     if (userResult > computerResult){
         console.log('you win');
+        messageHeader.innerHTML = 'CONGRATULATION'
+        messageBody.innerHTML = 'You Win!'
     } else if(userResult < computerResult){
         console.log('you lose');
+        messageHeader.innerHTML = "I'AM SORRY"
+        messageBody.innerHTML = 'You Lose!'
     } else {
         console.log('pair');
+        messageHeader.innerHTML = 'NOT BAD'
+        messageBody.innerHTML = "It's Pair!"
     }
 
+
+})
+
+const logOutButton = document.getElementById('to_LogOut');
+logOutButton.addEventListener('click', function(){
+    playground.classList.add('d-none');
+    logInContainer.classList.remove('d-none');
+    inputMail.value = "";
+    inputPassword.value = "";
+    signInMail.value = "";
+    signInPassword.value = "";
+    mailConfirmation.value = "";
+    passwordConfirmation.value = "";
 
 })

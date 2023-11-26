@@ -1,9 +1,9 @@
 .container .row {
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .bg-modal{
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     top: 0;
     background-color: rgba(0, 0, 0, 0.298);
