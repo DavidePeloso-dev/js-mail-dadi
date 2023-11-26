@@ -21,8 +21,12 @@ accessForm.addEventListener('submit', function(sub){
     const userMailAccess = inputMail.value;
     const userPasswordAccess = inputPassword.value;
 
-    // is the mail in the sistem?
-    if(usersMail.includes(userMailAccess)){
+    // are some input empty?
+    if (userMailAccess === "" || userPasswordAccess === ""){
+        accessForm.classList.add('was-validated');
+    }
+    // if not, is the mail in the sistem?
+    else if(usersMail.includes(userMailAccess)){
         // Yes
         for (let i = 0; i < usersMail.length; i++) {
             const mail = usersMail[i];
