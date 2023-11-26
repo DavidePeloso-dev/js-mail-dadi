@@ -64,14 +64,13 @@ signInForm.addEventListener('submit', function(sub){
                 // No
                 usersMail.push(createSignInMail);
                 usersPassword.push(createSingInPassword);
-                logInContainer.classList.remove('d-none');
-                signInContainer.classList.add('d-none');
                 inputMail.value = "";
                 inputPassword.value = "";
                 inputMail.classList.remove('error', 'is-invalid');
                 inputPassword.classList.remove('error', 'is-invalid');
                 accessForm.classList.remove('was-validated');
-
+                logInContainer.classList.remove('d-none');
+                signInContainer.classList.add('d-none');
             }
         }   
         // No
@@ -98,13 +97,13 @@ signInForm.addEventListener('submit', function(sub){
 // declare the Log In button
 const logInButton = document.getElementById('to_LogIn');
 logInButton.addEventListener('click', function(){
-    signInContainer.classList.add('d-none');
-    logInContainer.classList.remove('d-none');
     inputMail.value = "";
     inputPassword.value = "";
     inputMail.classList.remove('error', 'is-invalid');
     inputPassword.classList.remove('error', 'is-invalid');
     accessForm.classList.remove('was-validated');
+    signInContainer.classList.add('d-none');
+    logInContainer.classList.remove('d-none');
 })
 
 //remove the error validatin
@@ -186,8 +185,6 @@ accessForm.addEventListener('submit', function(sub){
 // declare the Sign In button
 const signInButton = document.getElementById('to_SignIn');
 signInButton.addEventListener('click', function(){
-    logInContainer.classList.add('d-none');
-    signInContainer.classList.remove('d-none');
     signInMail.value = "";
     signInPassword.value = "";
     mailConfirmation.value = "";
@@ -197,6 +194,8 @@ signInButton.addEventListener('click', function(){
     signInPassword.classList.remove('error', 'is-invalid');
     mailConfirmation.classList.remove('error');
     passwordConfirmation.classList.remove('error');
+    logInContainer.classList.add('d-none');
+    signInContainer.classList.remove('d-none');
 })
 
 //remove the error validatin
@@ -261,8 +260,6 @@ playButton.addEventListener('click', function(){
 
 const logOutButton = document.getElementById('to_LogOut');
 logOutButton.addEventListener('click', function(){
-    playground.classList.add('d-none');
-    logInContainer.classList.remove('d-none');
     inputMail.value = "";
     inputPassword.value = "";
     signInMail.value = "";
@@ -277,4 +274,6 @@ logOutButton.addEventListener('click', function(){
     signInPassword.classList.remove('error', 'is-invalid');
     mailConfirmation.classList.remove('error');
     passwordConfirmation.classList.remove('error');
+    playground.classList.add('d-none');
+    logInContainer.classList.remove('d-none');
 })
