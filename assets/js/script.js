@@ -66,6 +66,12 @@ signInForm.addEventListener('submit', function(sub){
                 usersPassword.push(createSingInPassword);
                 logInContainer.classList.remove('d-none');
                 signInContainer.classList.add('d-none');
+                inputMail.value = "";
+                inputPassword.value = "";
+                inputMail.classList.remove('error', 'is-invalid');
+                inputPassword.classList.remove('error', 'is-invalid');
+                accessForm.classList.remove('was-validated');
+
             }
         }   
         // No
@@ -94,6 +100,11 @@ const logInButton = document.getElementById('to_LogIn');
 logInButton.addEventListener('click', function(){
     signInContainer.classList.add('d-none');
     logInContainer.classList.remove('d-none');
+    inputMail.value = "";
+    inputPassword.value = "";
+    inputMail.classList.remove('error', 'is-invalid');
+    inputPassword.classList.remove('error', 'is-invalid');
+    accessForm.classList.remove('was-validated');
 })
 
 //remove the error validatin
@@ -177,6 +188,15 @@ const signInButton = document.getElementById('to_SignIn');
 signInButton.addEventListener('click', function(){
     logInContainer.classList.add('d-none');
     signInContainer.classList.remove('d-none');
+    signInMail.value = "";
+    signInPassword.value = "";
+    mailConfirmation.value = "";
+    passwordConfirmation.value = "";
+    signInForm.classList.remove('was-validated');
+    signInMail.classList.remove('error', 'is-invalid');
+    signInPassword.classList.remove('error', 'is-invalid');
+    mailConfirmation.classList.remove('error');
+    passwordConfirmation.classList.remove('error');
 })
 
 //remove the error validatin
@@ -249,5 +269,12 @@ logOutButton.addEventListener('click', function(){
     signInPassword.value = "";
     mailConfirmation.value = "";
     passwordConfirmation.value = "";
-
+    accessForm.classList.remove('was-validated');
+    signInForm.classList.remove('was-validated');
+    inputMail.classList.remove('error', 'is-invalid');
+    inputPassword.classList.remove('error', 'is-invalid');
+    signInMail.classList.remove('error', 'is-invalid');
+    signInPassword.classList.remove('error', 'is-invalid');
+    mailConfirmation.classList.remove('error');
+    passwordConfirmation.classList.remove('error');
 })
