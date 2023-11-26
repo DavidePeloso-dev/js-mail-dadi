@@ -12,17 +12,22 @@
       <div class="row justify-content-center align-items-center">
         <div class="col-6 card pb-3 pt-">
           <h1 class="py-2 fs-3 text-center border-bottom">Log in <span class="text-primary text-uppercase">your account</span> to play</h1>
-          <form id="access_form">
+          <form id="access_form" class="needs-validation" novalidate>
             <div class="mb-3">
               <label for="email" class="form-label mt-2">Email address</label>
               <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required>
+              <div class="invalid-feedback">Insert your Account Email</div>
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
               <input type="password" class="form-control" id="password" required>
+              <div class="invalid-feedback">Insert your Account Password</div>
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Access</button>
+            <div class="text-end">
+              <button type="button" class="btn btn-link text-primary mt-3 me-2">Sign In</button>
+              <button type="submit" class="btn btn-primary mt-3 px-4">Log In</button>
+            </div>
           </form>
         </div>
       </div>
@@ -34,8 +39,7 @@
           Something is wrong
         </div>
         <div class="card-body">
-          <h5 class="card-title">Verify this:</h5>
-          <p class="card-text">.....</p>
+          <h5 class="card-title mb-3">Verify this:</h5>
           <div class="text-end">
             <button id="close_modal" class="btn btn-danger">Close</button>
           </div>
