@@ -10,7 +10,7 @@
   <body class="d-flex position-relative">
     <div class="container ">
       <div class="row justify-content-center align-items-center">
-        <div class="col-6 card pb-3 pt-">
+        <div id="logIn_container" class="col-6 card pb-3">
           <h1 class="py-2 fs-3 text-center border-bottom">Log in <span class="text-primary text-uppercase">your account</span> to play</h1>
           <form id="access_form" class="needs-validation" novalidate>
             <div class="mb-3">
@@ -25,8 +25,39 @@
               <div class="invalid-feedback">Insert your Account Password</div>
             </div>
             <div class="text-end">
-              <button type="button" class="btn btn-link text-primary mt-3 me-2">Sign In</button>
+              <button id="to_SignIn" type="button" class="btn btn-link text-primary mt-3 me-2">Sign In</button>
               <button type="submit" class="btn btn-primary mt-3 px-4">Log In</button>
+            </div>
+          </form>
+        </div>
+
+        <div id="signIn_container" class="col-6 card pb-3 d-none">
+          <h1 class="py-2 fs-3 text-center border-bottom">Create <span class="text-primary text-uppercase">your account</span> to play</h1>
+          <form id="signIn_form" class="needs-validation" novalidate>
+            <div class="mb-3">
+              <label for="email_signIn" class="form-label mt-2">Email address</label>
+              <input type="email" class="form-control" id="email_signIn" aria-describedby="emailHelper" required>
+              <div class="invalid-feedback">Insert your Email</div>
+              <div id="emailHelper" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="email_confirmation" class="form-label">Confirm your Email address</label>
+              <input type="email" class="form-control" id="email_confirmation" required>
+              <div class="invalid-feedback">The emails dont't match</div>
+            </div>
+            <div class="mb-3">
+              <label for="password_signIn" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password_signIn" required>
+              <div class="invalid-feedback">Insert your Password</div>
+            </div>
+            <div class="mb-3">
+              <label for="password_confirmation" class="form-label">Confirm your Password</label>
+              <input type="password" class="form-control" id="password_confirmation" required>
+              <div class="invalid-feedback">The Passwors dont't match</div>
+            </div>
+            <div class="text-end">
+              <button id="to_LogIn" type="button" class="btn btn-link text-primary mt-3 me-2">Log In</button>
+              <button type="submit" class="btn btn-primary mt-3 px-4">Create Account</button>
             </div>
           </form>
         </div>
@@ -39,7 +70,8 @@
           Something is wrong
         </div>
         <div class="card-body">
-          <h5 class="card-title mb-3">Verify this:</h5>
+          <h5 class="card-title mb-3">...</h5>
+          <div class="card-text"></div>
           <div class="text-end">
             <button id="close_modal" class="btn btn-danger">Close</button>
           </div>

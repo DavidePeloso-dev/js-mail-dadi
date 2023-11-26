@@ -2,15 +2,103 @@
 const usersMail= ['davide@gmail.com', 'fabio@gmail.com', 'luca@gmail.com'];
 const usersPassword = ['mangia', 'prega', 'ama'];
 
+// declare the container of the forms
+const logInContainer = document.getElementById('logIn_container');
+const signInContainer = document.getElementById('signIn_container');
+
+/*------------------
+  Sign In section 
+------------------*/
+// define the inputs in the form
+const signInMail = document.getElementById('email_signIn');
+const mailConfirmation = document.getElementById('email_confirmation');
+const signInPassword = document.getElementById('password_signIn');
+const passwordConfirmation = document.getElementById('password_confirmation');
+
+// declare the all form
+const signInForm =document.getElementById('signIn_form');
+
+// validating the submit
+signInForm.addEventListener('submit', function(sub){
+    // prevent defoult function
+    sub.preventDefault();
+    sub.stopPropagation();
+    // declare the value in the inputs
+    const createSignInMail = signInMail.value;
+    const createMailConfirmation = mailConfirmation.value;
+    const createSingInPassword = signInPassword.value;
+    const createPasswordConfirmation = passwordConfirmation.value;
+
+    // are some input empty?
+    if (createSignInMail === "" || createMailConfirmation === "" || createSingInPassword === "" || createPasswordConfirmation === ""){
+        signInForm.classList.add('was-validated');
+    }
+    // if not, are the mail the same?
+    else if(createSignInMail === createMailConfirmation){
+        //if so, are the passwords the same?
+        if(createSingInPassword === createPasswordConfirmation){
+            // if so, has the mail already been used?
+            if(usersMail.includes(createSignInMail)){
+                // Yes
+                errorModal.classList.remove('d-none');
+                modalTitle.innerHTML = 'This email has already been used'
+                modalText.innerHTML = 'Try to Log In'
+                signInMail.classList.add('error', 'is-invalid');
+                mailConfirmation.classList.add('error');
+            }   // if not, has the password already been used?
+            else if(usersPassword.includes(createSingInPassword)){
+                // Yes
+                errorModal.classList.remove('d-none');
+                modalTitle.innerHTML = 'This Password has already been used'
+                modalText.innerHTML = 'Try another one'
+                signInPassword.classList.add('error', 'is-invalid');
+                passwordConfirmation.classList.add('error');
+            }   // No
+            else {
+                usersMail.push(createSignInMail);
+                usersPassword.push(createSingInPassword);
+                logInContainer.classList.remove('d-none');
+                signInContainer.classList.add('d-none');
+            }
+        }
+
+    }
+
+})
+
+// declare the Log In button
+const logInButton = document.getElementById('to_LogIn');
+logInButton.addEventListener('click', function(){
+    signInContainer.classList.add('d-none');
+    logInContainer.classList.remove('d-none');
+})
+
+//remove the error validatin
+signInMail.addEventListener('click', function(){
+    signInMail.classList.remove('error', 'is-invalid');
+    mailConfirmation.classList.remove('error');
+});
+
+signInPassword.addEventListener('click', function(){
+    signInPassword.classList.remove('error', 'is-invalid');
+    passwordConfirmation.classList.remove('error');
+})
+
+/*------------------
+   Log In section 
+------------------*/
+
 // declare the inputs in the form
-const inputMail = document.querySelector('#email')
-const inputPassword = document.querySelector('#password');
+const inputMail = document.getElementById('email')
+const inputPassword = document.getElementById('password');
 
 // declare the error modal
 const errorModal = document.querySelector('.bg-modal');
+const modalTitle = document.querySelector('.card-title');
+const modalText = document.querySelector('.card-text')
 
 // declare the all form
-const accessForm = document.querySelector('#access_form');
+const accessForm = document.getElementById('access_form');
 
 // validating the submit
 accessForm.addEventListener('submit', function(sub){
@@ -35,37 +123,48 @@ accessForm.addEventListener('submit', function(sub){
                 if(userPasswordAccess === usersPassword[i]){
                     // Yes
                     console.log('access');
-                    inputMail.classList.remove('error', 'is-invalid')
-                    inputPassword.classList.remove('error', 'is-invalid')
+                    inputMail.classList.remove('error', 'is-invalid');
+                    inputPassword.classList.remove('error', 'is-invalid');
+                    logInContainer.classList.add('d-none');
                 } else {
                     // No
                     console.log('something wrong');
                     errorModal.classList.remove('d-none');
-                    document.querySelector('.card-title').innerHTML = 'Try to check your credentials';
+                    modalTitle.innerHTML = 'Try to check your credentials';
                     accessForm.classList.add('was-validated');
-                    inputMail.classList.add('error', 'is-invalid')
-                    inputPassword.classList.add('error', 'is-invalid')
+                    inputMail.classList.add('error', 'is-invalid');
+                    inputPassword.classList.add('error', 'is-invalid');
                 }
             } 
         }
     } else {
         // No
         errorModal.classList.remove('d-none');
-        document.querySelector('.card-title').innerHTML = 'You are NOT registered';
+        modalTitle.innerHTML = 'You are NOT registered';
+        document.querySelector('.card-text').innerHTML = 'Click on the Sign in button to start!';
         accessForm.classList.add('was-validated');
-        inputMail.classList.add('error', 'is-invalid')
-        inputPassword.classList.add('error', 'is-invalid')
+        inputMail.classList.add('error', 'is-invalid');
+        inputPassword.classList.add('error', 'is-invalid');
     }
+});
+
+// declare the Sign In button
+const signInButton = document.getElementById('to_SignIn');
+signInButton.addEventListener('click', function(){
+    logInContainer.classList.add('d-none');
+    signInContainer.classList.remove('d-none');
 })
 
 //remove the error validatin
 inputMail.addEventListener('click', function(){
-    inputMail.classList.remove('error', 'is-invalid')
-})
+    inputMail.classList.remove('error', 'is-invalid');
+});
 
 inputPassword.addEventListener('click', function(){
-    inputPassword.classList.remove('error', 'is-invalid')
-})
+    inputPassword.classList.remove('error', 'is-invalid');
+});
+
+
 
 
 //close the error modal
@@ -73,4 +172,4 @@ const closeModal = document.querySelector('#close_modal');
 
 closeModal.addEventListener('click', function(){
     errorModal.classList.add('d-none');
-})
+});
